@@ -1,0 +1,16 @@
+{
+  "name": "md380webtools",
+  "version": "0.0.1",
+  "description": "MSync Client",
+  "scripts": {
+    "develop": "webpack --display-error-details --watch",
+    "webpack": "webpack --display-error-details"
+  },
+  "author": "Karl Koscher (KY0LO) <supersat@gmail.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {}
+}
