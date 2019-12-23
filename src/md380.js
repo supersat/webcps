@@ -25,7 +25,6 @@ export class MD380 {
     }
 
     import(codePlugBin) {
-        
     }
 }
 
@@ -73,5 +72,24 @@ export class MD380DFU extends DFU {
         data[1] = 0x05;
         await this.ctrlReqOut(DNLOAD, data);
         await this.getStatus();
+    }
+
+    async getCodePlug() {
+        let codePlug = new Uint8Array(0x40000);
+        await this._customCommand(0x91, 0x01);
+        await this._customCommand(0xa2, 0x02);
+        await this._customCommand(0xa2, 0x02);
+        await this._customCommand(0xa2, 0x03);
+        await this._customCommand(0xa2, 0x04);
+        await this._customCommand(0xa2, 0x07);
+        await this.setAddress(0);
+        let blockSize = 1024;
+        for (let blockNum = 2; blockNum < 0x102; blockNum++) {
+            let block = await this.upload(blockNum, blockSize);
+            let status = await this.getStatus();
+            codePlug.set(new Uint8Array(block.data.buffer),
+                (blockNum - 2) * blockSize);
+        }
+        return codePlug;
     }
 }

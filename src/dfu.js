@@ -27,23 +27,19 @@ export class DFU {
 		if (this.device) {
 			await this.close();
 		}
-
-		console.log(device);
-		console.log(device.configurations);
-		console.log('open device', device);
 		
 		await device.open();
 		await device.claimInterface(0);
 		this.device = device;
     }
 	
-	async ctrlReqIn(req, len) {
+	async ctrlReqIn(req, len, value = 0, index = 0) {
 		let ctrlReqType = {
 			requestType: 'class',
 			recipient: 'interface',
 			request: req,
-			value: 0,
-			index: 0
+			value: value,
+			index: index
 		};
 		
 		let resp;
@@ -85,7 +81,6 @@ export class DFU {
 
 	async getStatus() {
 		let resp = await this.ctrlReqIn(GETSTATUS, 6);
-		console.log(resp);
 		// TODO: Map to object?
 		return [resp.data.getUint8(0),
 			resp.data.getUint8(1) << 16 | resp.data.getUint16(2),
@@ -112,6 +107,10 @@ export class DFU {
 
 	async download(blockNum, data) {
 		await this.ctrlReqOut(DNLOAD, data, blockNum);
+	}
+
+	async upload(blockNum, length, index = 0) {
+		return await this.ctrlReqIn(UPLOAD, length, blockNum, index);
 	}
 
 	async _sendDnloadCommand(data) {
