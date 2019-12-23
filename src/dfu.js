@@ -137,6 +137,12 @@ export class DFU {
 		await this._sendAddrCommand(0x41, addr);	
 	}
 
+	async getCommand() {
+		let resp = await this.upload(0, 32);
+		await this.getStatus();
+		return resp;
+	}
+
 	async waitTilReady() {
 		while (true) {
 			let status = await this.getStatus();
