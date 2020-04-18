@@ -146,7 +146,7 @@ export class MD380DFU extends DFU {
         await this.setAddress(0x00000000);
 
         let blockNum = 2;
-        for (let offset = 0; offset < codePlug.length; offset += blockNum) {
+        for (let offset = 0; offset < codePlug.length; offset += blockSize) {
             let block = codePlug.slice(offset, offset + blockSize);
             await this.download(blockNum, block);
             while (true) {
@@ -155,6 +155,66 @@ export class MD380DFU extends DFU {
                     break;
             }
             blockNum++;
+        }
+    }
+
+    async putCodePlugUV(codePlug) {
+        await this._customCommand(0x91, 0x01);
+        await this._customCommand(0x91, 0x01);
+        await this._customCommand(0xa2, 0x02);
+        await this.getCommand();
+        await this._customCommand(0xa2, 0x02);
+        await this._customCommand(0xa2, 0x03);
+        await this._customCommand(0xa2, 0x04);
+        await this._customCommand(0xa2, 0x07);
+
+        await this.eraseBlock(0x00000000);
+        await this.eraseBlock(0x00010000);
+        await this.eraseBlock(0x00020000);
+        await this.eraseBlock(0x00030000);
+
+        await this.eraseBlock(0x00110000);
+        await this.eraseBlock(0x00120000);
+        await this.eraseBlock(0x00130000);
+        await this.eraseBlock(0x00140000);
+        await this.eraseBlock(0x00150000);
+        await this.eraseBlock(0x00160000);
+        await this.eraseBlock(0x00170000);
+        await this.eraseBlock(0x00180000);
+        await this.eraseBlock(0x00190000);
+
+        let address = 0;
+        for (let outerOffset = 0; outerOffset < 0x40000; outerOffset += 0x10000) {
+            await this.setAddress(address);
+            let blockNum = 2;
+            for (let offset = outerOffset; offset < outerOffset + 0x10000; offset += blockSize) {
+                let block = codePlug.slice(offset, offset + blockSize);
+                await this.download(blockNum, block);
+                while (true) {
+                    let status = await this.getStatus();
+                    if (status[2] == dfuDNLOAD_IDLE)
+                        break;
+                }
+                blockNum++;
+            }
+            address += 0x10000;
+        }
+
+        address = 0x00110000;
+        for (let outerOffset = 0x40000; outerOffset < codePlug.length; outerOffset += 0x10000) {
+            await this.setAddress(address);
+            let blockNum = 2;
+            for (let offset = outerOffset; offset < outerOffset + 0x10000; offset += blockSize) {
+                let block = codePlug.slice(offset, offset + blockSize);
+                await this.download(blockNum, block);
+                while (true) {
+                    let status = await this.getStatus();
+                    if (status[2] == dfuDNLOAD_IDLE)
+                        break;
+                }
+                blockNum++;
+            }
+            address += 0x10000;
         }
     }
 }
