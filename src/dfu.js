@@ -46,7 +46,7 @@ export class DFU {
 			if (resp.status == 'ok') {
 				break;
 			}
-			console.log(resp);
+			console.trace(resp);
 			sleep(50);
 		}
 		return resp;
@@ -71,7 +71,7 @@ export class DFU {
 			if (resp.status == 'ok') {
 				break;
 			}
-			console.log(resp);
+			console.trace(resp);
 			sleep(50);
 		}
 		return resp;
