@@ -1,3 +1,5 @@
+import { sleep } from "./util";
+
 const DETACH = 0;
 const DNLOAD = 1;
 const UPLOAD = 2;
@@ -17,10 +19,6 @@ const dfuMANIFEST = 7;
 const dfuMANIFEST_WAIT_RESET = 8;
 const dfuUPLOAD_IDLE = 9;
 const dfuERROR = 10;
-
-function sleep(ms) {
-	return new Promise(r => setTimeout(r, ms));
-}
 
 export class DFU {
 	async open(device) {
