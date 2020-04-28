@@ -8,4 +8,7 @@ function requestRadioAccess() {
     window.md380 = new MD380();
 }
 
-document.getElementById('connectToRadio').onclick = requestRadioAccess;
+let connectToRadioBtn = document.createElement('button');
+connectToRadioBtn.innerText = "Connect to Radio";
+connectToRadioBtn.onclick = requestRadioAccess;
+document.querySelector('body').appendChild(connectToRadioBtn);
