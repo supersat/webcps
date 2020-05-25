@@ -266,7 +266,7 @@ export class MDUV380DFU extends TYTDFU {
         await this._eraseBlocks(0x00000000, 0x00040000);
         await this._eraseBlocks(0x00110000, 0x00090000);
 
-        await this._putContiguousBlocks(codePlug, 0, codePlug.length, 0x00000000);
+        await this._putContiguousBlocks(codePlug, 0, 0x40000, 0x00000000);
         await this._putContiguousBlocks(codePlug, 0x40000, 0x90000, 0x00110000);
     }
 }
