@@ -20,15 +20,15 @@ module.exports = {
         // WebSerial origin trial tokens
         // http://localhost:29548/
         'ot1': { 'http-equiv': 'origin-trial', 'content':
-          'AudnsE9kRlPuBM5fyrW8Sswp9H9ML88ERW432s1ezGmTTFZ8Yow/T3voxChIIP0ygAI'+
-          'rbWGTJ8zJ11n7evhg0AcAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjI5NT'+
-          'Q4IiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTU5MTM1NDM1Nn0='
+          'Av8ojvNp2RO+0NJp2QA1+iXwoibkGBdnkPMUJQhvS43zxLsBJUVUMCWdvYuPF4NAzXJ'+
+          '8WIjEsCp7lGkjSHNc0gIAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjI5NT'+
+          'Q4IiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTU5NDkzNjkxNX0='
         },
         // https://webcps.ky0lo.com/
-        'ot2': { 'http-equiv': 'origin-trial', 'content':        
-          'AvkRsNH535Pwb9ZV8yRkb/9UZbc3fr7HksWsrtX55B0LYZjl9mPNY8pPJZgNytE5Jlu'+
-          'UMCRkLgQvGJqC/ciM1QIAAABQeyJvcmlnaW4iOiJodHRwczovL3dlYmNwcy5reTBsby'+
-          '5jb206NDQzIiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTU5MTI1MzcxN30='
+        'ot2': { 'http-equiv': 'origin-trial', 'content':
+          'AmD575UwBw94nhANRDRku71UPbrCDifTUBYZJQAK+Rvw82ViJJYAztrpXyJnbSdWiaK'+
+          '5roKvbmTwD6D6ACEYigIAAABQeyJvcmlnaW4iOiJodHRwczovL3dlYmNwcy5reTBsby'+
+          '5jb206NDQzIiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTU5NDkzNjkwOX0='
         }
       }
     }),
