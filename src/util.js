@@ -5,7 +5,7 @@ export function sleep(ms) {
 export function parseString(dataview, offset, maxLength, bytesPerChar) {
     let str = '';
 
-    for (let i = offset; i < offset + maxLength; i += bytesPerChar) {
+    for (let i = offset; i < offset + maxLength * bytesPerChar; i += bytesPerChar) {
         let char;
         if (bytesPerChar == 1) 
             char = dataview.getUint8(i);
