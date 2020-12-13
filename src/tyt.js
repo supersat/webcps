@@ -106,7 +106,7 @@ export class MD380 {
         for (let i = 0; i < 1000; i++) {
             let offset = contactListOffset + (i * 36);
             let contact = this._parseContact(
-                codePlugBin.slice(offset, offset + 36).buffer);
+                codePlugBin.slice(offset, offset + 36));
             this.contacts.push(contact);
             if (contact) {
                 this.dmrIdToContactMap[contact.dmrId] = i;
@@ -116,7 +116,7 @@ export class MD380 {
         for (let i = 0; i < 1000; i++) {
             let offset = channelListOffset + (i * 64);
             let channel = this._parseChannel(
-                codePlugBin.slice(offset, offset + 64).buffer);
+                codePlugBin.slice(offset, offset + 64));
             this.channels.push(channel);
         }
     }
@@ -248,7 +248,7 @@ export class MD380DFU extends TYTDFU {
         await this._customCommand(0xa2, 0x07);
 
         await this._eraseBlocks(0x00000000, 0x00040000);
-        await this._putContiguousBlocks(codePlug, 0, codePlug.length, 0x00000000);
+        await this._putContiguousBlocks(codePlug, 0, codePlug.byteLength, 0x00000000);
     }
 }
 
