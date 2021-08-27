@@ -16,21 +16,6 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'WebCPS',
-      meta: {
-        // WebSerial origin trial tokens
-        // http://localhost:29548/
-        'ot1': { 'http-equiv': 'origin-trial', 'content':
-          'AllAzUThJShkBc91evGucT2xwhVwUAlXEi9x6iubQKMndIEOppZEyfEQ/CMNZ1H9hSa'+
-          'GcLgeWKI+TTlBuNG8hgEAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjI5NT'+
-          'Q4IiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTYwMzkzNjkyNH0='
-        },
-        // https://webcps.ky0lo.com/
-        'ot2': { 'http-equiv': 'origin-trial', 'content':
-          'Ak9EzqTLk+9CycoH4yHb30/zxgE9naUK0QISWA39rh6Hz6q0fSqvJMgFQF2m4B3EYMu'+
-          'JepXghpVZ1X+xNYr8kAAAAABQeyJvcmlnaW4iOiJodHRwczovL3dlYmNwcy5reTBsby'+
-          '5jb206NDQzIiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTYwMzkzNjkzMH0='
-        }
-      }
     }),
   ],
   resolve: {
